@@ -38,8 +38,8 @@ const edificios = [
     { nombre: "Cafeteria", coords: [19.61259982026864, -99.34032226031468], imagen: "Image/Cafeteria.jpg", texto: "La cafeteria actualmente se encuentra fuera de servicio debido a las nuevas leyes impartidas por la presidenta actual Claudia Sheinbaum", iframe: "https://panoraven.com/es/embed/ffWOmO5UPs" },
     { nombre: "Edificio K", coords: [19.612345485457844, -99.34055844750884], imagen: "Image/EdificioK.jpg", texto: "Carreras ofertadas: T.S.U. en Mantenimiento, Área Industrial, T.S.U. en Mecatronica, Área Sistemas de Manufactura Flexible ,T.S.U. en Procesos Industriales, Área Automotríz, ING. en Mantenimiento Industrial ,ING. en Mecatronica, ING. en Sistemas Productivos, Ingeniería en Mantenimiento Industrial (Nuevo Plan), Ingeniería en Mecatrónica (Nuevo Plan) , Ingeniería Industrial (Nuevo Plan)", iframe: "https://panoraven.com/es/embed/30CBNY0HCO" },
     { nombre: "Edificio L", coords: [19.611967304478743, -99.33941718477618], imagen: "Image/EdificioL.jpg", texto: "Zonas Utilizables: Laboratorio de Ingeniera de Procesos, Laboratorio de Serigrafía , Laboratorio de Flexografía , Laboratorio de Post-Prensa , Laboratorio de manufactura-esbelta", iframe: "https://panoraven.com/es/embed/GusDMiJELO" },
-    { nombre: "Edificio M", coords: [19.6115459976567, -99.33884497301763], imagen: "Image/EdificioM.jpg", texto: "Carreras ofertadas: TSU en Quimica (Area Tecnologia Ambiental ), TSU en Energias Renovables (Area Solar ), TSU en Nanotecnlogia (Area Materiales), Ingeniera en Nanotecnologia, Ingenieria en Tecnologia Ambiental, Ingeneria en Energias Renovables", iframe: "" },
-    { nombre: "Edificio F", coords: [19.6115459976567, -99.33884497301763], imagen: "Image/LaboratorioPesado.jpg", texto: "Laboratorio Pesado de Nanotecnología y Tecnología Ambiental", iframe: "" },
+    { nombre: "Edificio M", coords: [19.6115459976567, -99.33884497301763], imagen: "Image/EdificioM.jpg", texto: "Carreras ofertadas: TSU en Quimica (Area Tecnologia Ambiental ), TSU en Energias Renovables (Area Solar ), TSU en Nanotecnlogia (Area Materiales), Ingeniera en Nanotecnologia, Ingenieria en Tecnologia Ambiental, Ingeneria en Energias Renovables", iframe: "https://panoraven.com/es/embed/HeOTW5A60y" },
+    { nombre: "Edificio F", coords: [19.6115459976567, -99.33884497301763], imagen: "Image/LaboratorioPesado.jpg", texto: "Laboratorio Pesado de Nanotecnología y Tecnología Ambiental", iframe: "https://panoraven.com/es/embed/qbzK663PBj" },
     { nombre: "Centro de Idiomas", coords: [19.61291571529895, -99.34203939229064], imagen: "Image/CentroIdiomas.jpg", texto: "En el centro de idiomas se puede encontrar informacion relevante a lo que son las certificaciones dadas por la universidad, chequeo referente a los horarios de las clases de ingles y ademas se puede llegar a consultar sobre lo que son los intercambios escolares a otros paises extranjeros", iframe: "https://panoraven.com/es/embed/Zf6OzM4pOl" },
     { nombre: "Edificio O", coords: [19.611573572691313, -99.34284378630267], imagen: "Image/EdificioO.jpg", texto: "Carreras Ofertadas: Licenciatura en administracion , Licenciatura en Contaduria, Licenciatura en Negocios y Mercadotecnia", iframe: "https://panoraven.com/es/embed/SzKEWfHQ4a" },
     { nombre: "Edificio P", coords: [19.609741423421426, -99.34507255218833], imagen: "Image/EdificioP.jpg", texto: "Carreras ofertadas: Licenciatura en Enfermeria y Licenciatura en Terapia Fisica", iframe: "" },
@@ -50,6 +50,7 @@ const edificios = [
     { nombre: "Puerta 5", coords: [19.613505302108074, -99.34378693919246], imagen: "Image/Puerta5.jpg", texto: "Puerta de acceso para los estudiantes que cursan principalmente Enfermeria y Terapia Fisica", iframe: "" },
     { nombre: "ExHacienda", coords: [19.61297453785049, -99.3370500652114], imagen: "Image/ExHacienda.jpg", texto: "Este es el lugar en el que se encuentran los restos de la hacienda en la que se plantaron las bases para lo que es la Universidad Tecnologica Fidel Velazquez", iframe: "" },
     { nombre: "Centro de Investigacion", coords: [19.612731460349398, -99.34158703635343], imagen: "Image/CentroInvestigacion.jpg", texto: "Centro de vinculacion e investigacion para la resolucion de problemas y vinculacion con empresas para proyectos a futuro, ademas se encuentran los laboratorio de Metrología y Manufactura.", iframe: "https://panoraven.com/es/embed/XtytdM72be" },
+     { nombre:"Rectoria", coords: [19.61350199379683, -99.33874177643236], imagen: "", texto: "El edificio de rectoria es donde se encuentran asuntos oficiales y respecto a la tesoreria de la escuela, principalmente son servicios administrativos", iframe: "https://panoraven.com/es/embed/x7hpKyXKOo" },
     { nombre: "Gimnasio", coords: [19.61192531212748, -99.34346601220417], imagen: "Image/Gimnasio.jpg", texto: "Aqui es donde se encuentra el Estadio Dragones y ademas se practican diferentes disciplinas como lo son basquetball, taekwondo, voleyball y en la parte superior se encuentra lo que es el gimnasio con acceso gratuito para los estudiantes", iframe: "https://panoraven.com/es/embed/yo1POTdxXY" }
 ];
 edificios.forEach(edificio => {
@@ -124,7 +125,9 @@ const edificiosS = {
   'Puerta 5': 'Acceso Estudiantes de Área de Salud',
   'ExHacienda': 'Casco de la Ex-Hacienda',
   'Centro de Investigacion': 'Centro de Investigación y Vinculación',
+  'Rectoria': 'Rectoria',
   'Gimnasio': 'Estadio y Gimnasio "Dragones"'
+
 };
 
 
