@@ -6,7 +6,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 const edificios = [
     { nombre: "La Era", coords: [19.613065042754652, -99.33843453247002], imagen: "Image/LaEra.jpg", texto: "Zona en la que se encuentra el area de psicologia y la zona rosa la cual es la zona de apoyo hacia las mujeres", iframe: "https://panoraven.com/es/embed/Mrmm8WEuc9" },
-    { nombre: "Edificio D", coords: [19.613199385731225, -99.33929682332334], imagen: "Image/EdificioD.png", texto: "Este edificio se encarga de lo que es la programación. La principal carrera que se desarrolla aquí es Desarrollo de Software Multiplataforma.", iframe: "https://panoraven.com/es/embed/CHpzNsR7Ru" },
+    { nombre: "Edificio D", coords: [19.613199385731225, -99.33929682332334], imagen: "Image/EdificioD.png", texto: "Este edificio se encarga de lo que es la programación. La principal carrera que se desarrolla aquí es Desarrollo de Software Multiplataforma.", iframe: "https://panoraven.com/es/embed/Mrmm8WEuc9" },
     { nombre: "Edificio E", coords: [19.612658550345884, -99.33923302928696], imagen: "Image/EdificioE.png", texto: "Este es el encargado de los laboratorios de textiles, serigrafía y planchado", iframe: "https://panoraven.com/es/embed/hyJ7y1XC7O" },
     { nombre: "Edificio G", coords: [19.612740662393154, -99.34097796305412], imagen: "Image/EdificioG.jpg", texto: "Carreras ofertadas: Técnico Superior universitario en emprendimiento formulación y evaluación de proyectos, TSU en Gestión del capital Humano , TSU en Administración Área Capital Humano", iframe: "https://panoraven.com/es/embed/2JsXuQydkU" },
     { nombre: "Cafeteria", coords: [19.61259982026864, -99.34032226031468], imagen: "Image/Cafeteria.jpg", texto: "La cafeteria actualmente se encuentra fuera de servicio debido a las nuevas leyes impartidas por la presidenta actual Claudia Sheinbaum", iframe: "https://panoraven.com/es/embed/ffWOmO5UPs" },
@@ -24,7 +24,6 @@ const edificios = [
     { nombre: "Puerta 5", coords: [19.613505302108074, -99.34378693919246], imagen: "Image/Puerta5.jpg", texto: "Puerta de acceso para los estudiantes que cursan principalmente Enfermeria y Terapia Fisica", iframe: "" },
     { nombre: "ExHacienda", coords: [19.61297453785049, -99.3370500652114], imagen: "Image/ExHacienda.jpg", texto: "Este es el lugar en el que se encuentran los restos de la hacienda en la que se plantaron las bases para lo que es la Universidad Tecnologica Fidel Velazquez", iframe: "" },
     { nombre: "Centro de Investigacion", coords: [19.612731460349398, -99.34158703635343], imagen: "Image/CentroInvestigacion.jpg", texto: "Centro de vinculacion e investigacion para la resolucion de problemas y vinculacion con empresas para proyectos a futuro, ademas se encuentran los laboratorio de Metrología y Manufactura.", iframe: "https://panoraven.com/es/embed/XtytdM72be" },
-    { nombre: "Edificio C", coords: [19.6135109159305, -99.33869382314423], imagen: "Image/.jpg", texto: "", iframe: "" },
     { nombre: "Gimnasio", coords: [19.61192531212748, -99.34346601220417], imagen: "Image/Gimnasio.jpg", texto: "Aqui es donde se encuentra el Estadio Dragones y ademas se practican diferentes disciplinas como lo son basquetball, taekwondo, voleyball y en la parte superior se encuentra lo que es el gimnasio con acceso gratuito para los estudiantes", iframe: "https://panoraven.com/es/embed/yo1POTdxXY" }
 ];
 edificios.forEach(edificio => {
@@ -99,7 +98,6 @@ const edificiosS = {
   'Puerta 5': 'Acceso Estudiantes de Área de Salud',
   'ExHacienda': 'Casco de la Ex-Hacienda',
   'Centro de Investigacion': 'Centro de Investigación y Vinculación',
-  'Edificio C': 'Rectoria de la Universidad',  
   'Gimnasio': 'Estadio y Gimnasio "Dragones"'
 };
 
@@ -220,30 +218,36 @@ function llenarSelectores() {
   });
 }
 
+document.addEventListener("DOMContentLoaded", llenarSelectores);
 
-  if (navigator.geolocation) {
-    const ubicacionMarker = L.circleMarker([0, 0], {
-      radius: 8,
-      color: "#085f26",
-      fillColor: "#19e57c",
-      fillOpacity: 0.8
-    }).addTo(map);
+function seleccionarSugerencia(nombreCompleto) {
+  const clave = nombreCompleto.split(' - ')[0];
+  const edificio = edificios.find(e => e.nombre === clave);
 
-    navigator.geolocation.watchPosition(position => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-
-      ubicacionMarker.setLatLng([lat, lon]);
-
-      // Si quieres centrar automáticamente:
-      // map.setView([lat, lon], 17);
-    }, error => {
-      console.error("Error de geolocalización:", error);
-    }, {
-      enableHighAccuracy: true
-    });
-  } else {
-    alert("Tu navegador no soporta geolocalización.");
+  if (!edificio) {
+    alert("No se encontró el edificio: " + clave);
+    return;
   }
 
-document.addEventListener("DOMContentLoaded", llenarSelectores);
+  if (edificio.coords.length === 2) {
+    map.setView(edificio.coords, 17, { animate: true });
+    abrirInfoEdificio(edificio);
+  }
+
+  document.getElementById('busqueda').value = edificiosS[clave];
+  document.getElementById('sugerencias').style.display = 'none';
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const nombreBuscado = params.get("edificio");
+
+  if (nombreBuscado) {
+    const edificio = edificios.find(e => e.nombre === nombreBuscado);
+    if (edificio && edificio.coords.length === 2) {
+      map.setView(edificio.coords, 17, { animate: true });
+      abrirInfoEdificio(edificio);
+    } else {
+      console.warn("Edificio no encontrado o sin coordenadas:", nombreBuscado);
+    }
+  }
+});
