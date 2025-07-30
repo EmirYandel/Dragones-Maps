@@ -49,7 +49,7 @@ function abrirInfoEdificio(edificio) {
   texto.innerHTML = `<strong>${edificio.nombre}</strong><br>${edificio.texto}`;
   iframe.src = edificio.iframe;
 
-  // Si el edificio tiene un iframe panorama, también cambiarlo
+
   if (edificio.iframe) {
     panoramaIframe.src = edificio.iframe;
   }
@@ -66,7 +66,7 @@ map.on('dblclick', () => {
 function cerrarInfo() {
   document.getElementById('info-edificio').style.display = 'none';
 
-  // 🔼 Volver a mostrar vista 360°
+
   document.getElementById('iframe-container').style.display = 'block';
 }
 
@@ -178,7 +178,7 @@ document.getElementById('busqueda').value = edificiosS[clave];
     });
   }
   
-// Cerrar sugerencias al hacer clic fuera del input
+
   document.addEventListener('click', function (e) {
     if (!document.getElementById('sugerencias').contains(e.target) &&
         e.target.id !== 'busqueda') {
@@ -187,7 +187,7 @@ document.getElementById('busqueda').value = edificiosS[clave];
   });
 
 
-  // Cambiar imagen del calendario según el número seleccionado
+  
     function cambiarImagen(num) {
     const imagenes = {
       '1': 'Image/Calendario (1).png',
