@@ -24,6 +24,7 @@ const edificios = [
     { nombre: "Puerta 5", coords: [19.613505302108074, -99.34378693919246], imagen: "Image/Puerta5.jpg", texto: "Puerta de acceso para los estudiantes que cursan principalmente Enfermeria y Terapia Fisica", iframe: "" },
     { nombre: "ExHacienda", coords: [19.61297453785049, -99.3370500652114], imagen: "Image/ExHacienda.jpg", texto: "Este es el lugar en el que se encuentran los restos de la hacienda en la que se plantaron las bases para lo que es la Universidad Tecnologica Fidel Velazquez", iframe: "" },
     { nombre: "Centro de Investigacion", coords: [19.612731460349398, -99.34158703635343], imagen: "Image/CentroInvestigacion.jpg", texto: "Centro de vinculacion e investigacion para la resolucion de problemas y vinculacion con empresas para proyectos a futuro, ademas se encuentran los laboratorio de Metrología y Manufactura.", iframe: "https://panoraven.com/es/embed/XtytdM72be" },
+    { nombre: "Edificio C", coords: [19.6135109159305, -99.33869382314423], imagen: "Image/.jpg", texto: "", iframe: "" },
     { nombre: "Gimnasio", coords: [19.61192531212748, -99.34346601220417], imagen: "Image/Gimnasio.jpg", texto: "Aqui es donde se encuentra el Estadio Dragones y ademas se practican diferentes disciplinas como lo son basquetball, taekwondo, voleyball y en la parte superior se encuentra lo que es el gimnasio con acceso gratuito para los estudiantes", iframe: "https://panoraven.com/es/embed/yo1POTdxXY" }
 ];
 edificios.forEach(edificio => {
@@ -98,6 +99,7 @@ const edificiosS = {
   'Puerta 5': 'Acceso Estudiantes de Área de Salud',
   'ExHacienda': 'Casco de la Ex-Hacienda',
   'Centro de Investigacion': 'Centro de Investigación y Vinculación',
+  'Edificio C': 'Rectoria de la Universidad',  
   'Gimnasio': 'Estadio y Gimnasio "Dragones"'
 };
 
