@@ -218,4 +218,30 @@ function llenarSelectores() {
   });
 }
 
+
+  if (navigator.geolocation) {
+    const ubicacionMarker = L.circleMarker([0, 0], {
+      radius: 8,
+      color: "#085f26",
+      fillColor: "#19e57c",
+      fillOpacity: 0.8
+    }).addTo(map);
+
+    navigator.geolocation.watchPosition(position => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      ubicacionMarker.setLatLng([lat, lon]);
+
+      // Si quieres centrar automáticamente:
+      // map.setView([lat, lon], 17);
+    }, error => {
+      console.error("Error de geolocalización:", error);
+    }, {
+      enableHighAccuracy: true
+    });
+  } else {
+    alert("Tu navegador no soporta geolocalización.");
+  }
+
 document.addEventListener("DOMContentLoaded", llenarSelectores);
