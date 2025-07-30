@@ -4,30 +4,44 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
-function agregarUbicacionTiempoReal() {
+function agregarUbicacionTiempoReal(map) {
   if (!navigator.geolocation) {
-    alert("Tu navegador no soporta geolocalización.");
+    alert("Este navegador no admite geolocalización.");
     return;
   }
 
-  const ubicacionMarker = L.circleMarker([0, 0], {
+  // Crear el marcador visual al que se le actualizará la posición
+  const marcadorUsuario = L.circleMarker([0, 0], {
     radius: 8,
-    color: "#085f26",
+    color: "#1e6d3d",
     fillColor: "#19e57c",
-    fillOpacity: 0.8
-  }).addTo(map);
+    fillOpacity: 0.85,
+    weight: 2
+  }).addTo(map).bindPopup("Tu ubicación actual");
 
-  // Rastrear cambios en tiempo real
-  navigator.geolocation.watchPosition(position => {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
+  // Rastrear y actualizar constantemente la posición del usuario
+  const watchID = navigator.geolocation.watchPosition(
+    posicion => {
+      const { latitude, longitude } = posicion.coords;
+      const coordenadasActuales = [latitude, longitude];
 
-    ubicacionMarker.setLatLng([lat, lon]);
-  }, err => {
-    console.error("Error de ubicación:", err);
-  }, {
-    enableHighAccuracy: true
-  });
+      marcadorUsuario.setLatLng(coordenadasActuales);
+
+      // Centrar mapa (solo una vez si lo deseas)
+      // map.setView(coordenadasActuales, 17);
+    },
+    error => {
+      console.warn("Error de geolocalización:", error.message);
+    },
+    {
+      enableHighAccuracy: true,
+      maximumAge: 10000,
+      timeout: 10000
+    }
+  );
+
+  // Retornar el ID del rastreo si luego quieres cancelarlo
+  return watchID;
 }
 
 const edificios = [
