@@ -4,6 +4,32 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
+function agregarUbicacionTiempoReal() {
+  if (!navigator.geolocation) {
+    alert("Tu navegador no soporta geolocalización.");
+    return;
+  }
+
+  const ubicacionMarker = L.circleMarker([0, 0], {
+    radius: 8,
+    color: "#085f26",
+    fillColor: "#19e57c",
+    fillOpacity: 0.8
+  }).addTo(map);
+
+  // Rastrear cambios en tiempo real
+  navigator.geolocation.watchPosition(position => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    ubicacionMarker.setLatLng([lat, lon]);
+  }, err => {
+    console.error("Error de ubicación:", err);
+  }, {
+    enableHighAccuracy: true
+  });
+}
+
 const edificios = [
     { nombre: "La Era", coords: [19.613065042754652, -99.33843453247002], imagen: "Image/LaEra.jpg", texto: "Zona en la que se encuentra el area de psicologia y la zona rosa la cual es la zona de apoyo hacia las mujeres", iframe: "https://panoraven.com/es/embed/Mrmm8WEuc9" },
     { nombre: "Edificio D", coords: [19.613199385731225, -99.33929682332334], imagen: "Image/EdificioD.png", texto: "Este edificio se encarga de lo que es la programación. La principal carrera que se desarrolla aquí es Desarrollo de Software Multiplataforma.", iframe: "https://panoraven.com/es/embed/Mrmm8WEuc9" },
