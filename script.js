@@ -12,7 +12,7 @@ function agregarUbicacionTiempoReal(map) {
 
   // Crear el marcador visual al que se le actualizará la posición
   const marcadorUsuario = L.circleMarker([0, 0], {
-    radius: 8,
+    radius: 13,
     color: "#1e6d3d",
     fillColor: "#19e57c",
     fillOpacity: 0.85,
