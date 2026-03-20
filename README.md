@@ -1,6 +1,5 @@
-# 🐉 Dragones Maps – Mapa Interactivo para la UTFV
+# 🐉 Dragones Maps – Mapa Interactivo para la UTFV: https://ketahgd.github.io/Dragones-Maps/
 
-![Dragones Maps](Image/DragonLogo.JPG)
 
 > Aplicación web que facilita la ubicación dentro del campus de la **Universidad Tecnológica Fidel Velázquez (UTFV)**. Incluye mapa interactivo, búsqueda de edificios, vista 360°, autenticación de usuarios y directorio académico.
 
